@@ -1,7 +1,14 @@
-import { Router } from 'express';
+import { Router, Request, Response } from "express";
+import AutorController from "../controllers/AutorController";
 
 const autorRoutes = Router();
+const autorController = new AutorController();
 
-/* Implemente aqui os métodos que irão atender as requisições HTTP para a entidade Autor. */
+autorRoutes.post("/", autorController.create);
+autorRoutes.get("/", autorController.getAll);
+autorRoutes.get("/:id", autorController.getOne);
+autorRoutes.get("/birthday", autorController.getAuthorsBirthday);
+autorRoutes.put("/:id", autorController.update);
+autorRoutes.delete("/:id", autorController.delete);
 
 export default autorRoutes;
